@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención al Cliente - [GyE S.R.L]</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; text-align: center; padding: 20px; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 15px; shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        p { color: #666; font-size: 14px; }
+        .btn { 
+            display: block; 
+            width: 100%; 
+            padding: 15px 0; /* Ajustamos padding para asegurar simetría */
+            margin: 10px 0; 
+            text-decoration: none; 
+            color: white; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-size: 16px; 
+            transition: 0.3s;
+            /* Estas 3 líneas arreglan el botón de Tips: */
+            border: none; 
+            cursor: pointer;
+            box-sizing: border-box; 
+        }
+        /* Colores por categoría */
+        .ventas { background-color: #28a745; } /* Verde */
+        .logistica { background-color: #007bff; } /* Azul */
+        .admin { background-color: #6c757d; } /* Gris */
+        .info { background-color: #ffc107; color: #333; } /* Amarillo */
+        
+        .btn:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Centro de Consultas</h2>
+    <p>Seleccioná el motivo de tu contacto para derivarte con el área correspondiente.</p>
+
+    <a href="https://wa.me/5493496401626?text=Hola Juan! Quiero presupuesto de Hormigón" class="btn ventas">🏗️ Presupuesto de Hormigón</a>
+    <a href="https://wa.me/5493496400660?text=Hola Abel! Quiero presupuesto de Mov. Suelo" class="btn ventas">🚜 Mov. Suelo</a>
+<a href="https://wa.me/5493496555333?text=Hola Sol Pinturas! Quiero presupuesto de Aditivos" class="btn ventas">Aditivos</a>
+    <a href="https://wa.me/5493496401626?text=Hola Juan! Quiero presupuesto de Áridos (Tierra/Ripio/Arena)" class="btn ventas">🚛 Tierra / Áridos</a>
+
+    <a href="https://wa.me/5493496401229?text=Hola Diego! Necesito coordinar un turno de Hormigón" class="btn logistica">📅 Turno Hormigón</a>
+    <a href="https://wa.me/5493496401626?text=Hola Juan! Autorización para hacer un flete de retorno de Malagueño a Esperanza" class="btn logistica">🚚 Autorización Flete Retorno</a>
+
+    <a href="https://wa.me/5493496400656?text=Hola M.Eugenia! Consulto por mi estado de cuenta" class="btn admin">💳 Cuentas / Pagos de Clientes</a>
+<a href="https://wa.me/5493496401535?text=Hola Nicolas! Consulto por mi estado de cuenta de proveedor" class="btn admin">💳 Pagos a Proveedores</a>
+    <a href="https://wa.me/5493496401888?text=Hola Silvana! Envío/Solicito seguros y/o permisos" class="btn admin">📄 Seguros / Permisos</a>
+
+    <a href="C:\Users\franc\OneDrive\Desktop\index vacaciones\Calculadora.html" class="btn info">🧮 Calculadora de Hormigón</a>
+    <a href="https://wa.me/5493496401626?text=Hola Juan! Tengo una consulta técnica" class="btn info">💡 Consulta Técnica</a>
+<button onclick="mostrarConsejos()" class="btn info">📋 Tips antes de pedir Hormigón</button>
+
+<script>
+function mostrarConsejos() {
+    alert("RECOMENDACIONES CLAVE:\n\n1.Preparacion del terreno: Nivelacion (suelo compactado y nivelado) Humedad (Suelo o base saturado para que no absorba el agua del hormigon) Encofrados (Bien firmes y apuntalados, 1m3=2.450kg).\n2. Acceso del camion (lugar libre 3.80mts alto x 2.65 ancho, el camion cargado pesa aprox 30Tn, Si hay que trasladar el material mucha distancia CONSIDERAR SERVICIO DE BOMBA).\n3.Personal y Herramientas (Tener el personal suficiente, el camion espera 1 hora en obra - Contar con reglas, llanas, vibrador, carretillas).\n4. El clima (el calor, el frio y el viento extremos son peligrosos! pedi asesoramiento.\n5.Curado y Aserrado (asesorate tanto con el como y el porque de estas practicas constructivas).");
+}
+</script>
+
+</div>
+
+</body>
+</html>

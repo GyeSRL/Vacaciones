@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Hormigón - GyE S.R.L</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; padding: 20px; display: flex; justify-content: center; }
+        .calc-card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { color: #333; text-align: center; margin-bottom: 20px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; background: white; }
+        input:focus, select:focus { border-color: #28a745; outline: none; }
+        .result-box { background: #e8f5e9; padding: 15px; border-radius: 10px; text-align: center; margin-top: 20px; display: none; }
+        .result-text { font-size: 24px; font-weight: bold; color: #2e7d32; }
+        .btn-whatsapp { 
+            display: block; width: 100%; padding: 15px; background-color: #25d366; 
+            color: white; text-align: center; text-decoration: none; border-radius: 8px; 
+            font-weight: bold; margin-top: 20px; display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calc-card">
+    <h2>🧮 Calcular Presupuesto</h2>
+    
+    <div class="input-group">
+        <label>Ubicación de la Obra</label>
+        <input type="text" id="ubicacion" placeholder="Ej: Esperanza (Barrio Sur) / Humboldt" oninput="calcular()">
+    </div>
+
+    <div class="input-group">
+        <label>Tipo de Hormigón / Relleno</label>
+        <select id="tipoHormigon" onchange="calcular()">
+            <option value="H8">H8 (Limpieza / Contrapisos)</option>
+            <option value="H13">H13</option>
+            <option value="H17">H17</option>
+            <option value="H21" selected>H21 (Estructural estándar)</option>
+            <option value="H25">H25</option>
+            <option value="H30">H30</option>
+            <option value="RDC100">RDC 100</option>
+            <option value="RDC150">RDC 150</option>
+            <option value="RDC200">RDC 200</option>
+            <option value="RDC300">RDC 300</option>
+            <option value="H Liviano">H° Liviano con Telgopor</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>Largo (metros)</label>
+        <input type="number" id="largo" placeholder="0.0" step="0.1" oninput="calcular()">
+    </div>
+
+    <div class="input-group">
+        <label>Ancho (metros)</label>
+        <input type="number" id="ancho" placeholder="0.0" step="0.1" oninput="calcular()">
+    </div>
+
+    <div class="input-group">
+        <label>Espesor (centímetros)</label>
+        <input type="number" id="espesor" placeholder="12" step="1" oninput="calcular()">
+    </div>
+
+    <div id="resultadoCont" class="result-box">
+        <p>Volumen Estimado:</p>
+        <span id="totalM3" class="result-text">0</span> <strong>m³</strong>
+        <p id="infoExtra" style="font-size: 14px; color: #333; margin-top: 5px;"></p>
+    </div>
+
+    <a href="#" id="waLink" class="btn-whatsapp" target="_blank">📲 Pedir presupuesto vía WhatsApp</a>
+    
+    <p style="text-align: center; margin-top: 20px;">
+        <a href="index.html" style="color: #666; text-decoration: none; font-size: 14px;">← Volver al menú principal</a>
+    </p>
+</div>
+
+<script>
+function calcular() {
+    const ubicacion = document.getElementById('ubicacion').value;
+    const largo = document.getElementById('largo').value;
+    const ancho = document.getElementById('ancho').value;
+    const espesor = document.getElementById('espesor').value;
+    const tipo = document.getElementById('tipoHormigon').value;
+    
+    const resDiv = document.getElementById('resultadoCont');
+    const waLink = document.getElementById('waLink');
+
+    if(largo > 0 && ancho > 0 && espesor > 0) {
+        let m3 = largo * ancho * (espesor / 100);
+        m3 = m3.toFixed(2);
+
+        document.getElementById('totalM3').innerText = m3;
+        document.getElementById('infoExtra').innerText = `${tipo} en ${ubicacion || 'ubicación a definir'}`;
+        
+        resDiv.style.display = 'block';
+        waLink.style.display = 'block';
+
+        // Mensaje para WhatsApp
+        const locStr = ubicacion ? `en ${ubicacion}` : '';
+        const mensaje = `Hola! Consulto por ${m3} m3 de ${tipo} para una obra ${locStr}. (Medidas: ${largo}m x ${ancho}m x ${espesor}cm)`;
+        
+        // Enviamos la consulta a Juan
+        waLink.href = `https://wa.me/5493496401626?text=${encodeURIComponent(mensaje)}`;
+    } else {
+        resDiv.style.display = 'none';
+        waLink.style.display = 'none';
+    }
+}
+</script>
+
+</body>
+</html>
